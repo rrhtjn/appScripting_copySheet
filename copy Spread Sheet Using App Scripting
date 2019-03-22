@@ -1,0 +1,39 @@
+function ConCat() {
+  var app = SpreadsheetApp;
+  var sheet1 =app.getActiveSpreadsheet().getSheetByName("Current Logs");
+  var data =sheet1.getDataRange().getValues();
+  
+   var data1= sheet1.getRange(1,1,sheet1.getLastRow(),sheet1.getLastColumn()).getValues();
+  
+   var sheet2 =  app.getActiveSpreadsheet().getSheetByName("Sheet3");
+  
+  if(data1[0].length%2==0)
+  {
+  for(var i=0;i<data1.length;i++)
+  {
+    var k=0;
+    for(var j=0;j<(data1[0].length)/2;j++)
+    {
+      
+  sheet2.getRange(i+1,j+1).setValue(data1[i][k] +"  "+ data1[i][k+1]);
+    k=k+2;
+    }}}
+  
+  
+  else if(data1[0].length/2!=0)
+  {  
+  for(var i=0;i<data1.length;i++)
+  {
+    var k=0;
+    for(var j=0;j<(data1[0].length)/2-0.5;j++)// how to get integer value
+    {
+      
+  sheet2.getRange(i+1,j+1).setValue(data1[i][k] +"  "+ data1[i][k+1]);
+      k=k+2;
+    }
+   sheet2.getRange(i+1, data1[0].length/2+1).setValue(data[i][data1[0].length-1]);
+  
+  }
+
+}
+}
